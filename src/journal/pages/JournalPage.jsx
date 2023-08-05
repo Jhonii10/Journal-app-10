@@ -1,13 +1,11 @@
-import { Typography } from "@mui/material";
 import JournalLayout from "../layout/JournalLayout";
+import NothingSelectedView from "../views/NothingSelectedView";
 
 
 const JournalPage = () => {
     return (
         <JournalLayout>
-            <Typography variant="h1">
-                This is the journal page.
-            </Typography>
+                <NothingSelectedView/>
         </JournalLayout>
     );
 }
