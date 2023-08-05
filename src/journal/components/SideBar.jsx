@@ -30,8 +30,8 @@ const SideBar = ({draweWidth}) => {
                 {
                     ['enero','febrero','marzo','abril','mayo','junio'].map(text =>(
                         <ListItem key={text} disablePadding>
-                        <ListItemIcon>
-                            <TurnedInNot/>
+                        <ListItemIcon >
+                            <TurnedInNot sx={{marginLeft:'12px'}}/>
                         </ListItemIcon>
                             <Grid container>
                                 <ListItemText primary={text}/>
