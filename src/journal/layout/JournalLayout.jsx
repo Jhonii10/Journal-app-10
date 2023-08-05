@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
+import Navbar from "../components/Navbar";
+import SideBar from "../components/SideBar";
 
-//const draweWidth = 240;
+const draweWidth = 240;
 
 const JournalLayout = ({children}) => {
     return (
         <Box sx={{ display:"flex"}}>
-            {/* navbar */}
-            {/* slider */}
+            <Navbar draweWidth={draweWidth}/>
+            <SideBar draweWidth={draweWidth}/>
             <Box 
                 component={'main'}
                 sx={{flexGrow:1, p:3}}
             >
+
+            <Toolbar/>
             {children}
 
             </Box>
