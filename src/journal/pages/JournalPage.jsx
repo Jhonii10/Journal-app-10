@@ -1,11 +1,13 @@
 import JournalLayout from "../layout/JournalLayout";
-import NothingSelectedView from "../views/NothingSelectedView";
+import NoteView from "../views/NoteView";
+//import NothingSelectedView from "../views/NothingSelectedView";
 
 
 const JournalPage = () => {
     return (
         <JournalLayout>
-                <NothingSelectedView/>
+                {/* <NothingSelectedView/> */}
+                <NoteView/>
         </JournalLayout>
     );
 }
