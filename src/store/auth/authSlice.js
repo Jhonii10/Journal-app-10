@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from '@reduxjs/toolkit';
 
 export const authSlice = createSlice({
@@ -18,7 +19,7 @@ export const authSlice = createSlice({
         
     },
     checkingCredentials: (state)=>{
-
+        state.status = 'checking'
     }
 
   }
