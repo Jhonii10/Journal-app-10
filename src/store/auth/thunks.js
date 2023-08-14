@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { checkingCredentials } from "./authSlice"
+import { singInWithGoogle } from "../../firebase/providers"
+import { checkingCredentials, login, logout } from "./authSlice"
 
 export const checkingAuthentication = (email,password) =>{
     return async(dispatch)=>{
@@ -12,5 +13,12 @@ export const checkingAuthentication = (email,password) =>{
 export const startGoogleSignIn = ()=>{
     return async (dispatch)=>{
         dispatch(checkingAuthentication())
+        const results = await singInWithGoogle()
+        
+        if (!results.ok) {
+            dispatch(logout(results.errorMessage))
+        }else{
+            dispatch(login(results))
+        }
     }
 }
