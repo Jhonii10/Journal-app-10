@@ -1,4 +1,5 @@
-import {GoogleAuthProvider,  signInWithPopup , createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
+/* eslint-disable no-unused-vars */
+import {GoogleAuthProvider,  signInWithPopup , createUserWithEmailAndPassword, updateProfile , signInWithEmailAndPassword} from 'firebase/auth';
 import { firebaseAuth } from './config';
 
 const googleProvider =new GoogleAuthProvider();
@@ -43,6 +44,25 @@ export const registerUserWithEmailPassword = async({email,password,displayName})
 
         await updateProfile( firebaseAuth.currentUser, { displayName });
 
+        return{
+            ok:true,
+            uid,photoURL,displayName
+        }
+        
+    } catch (error) {
+        return{
+            ok:false,
+            errorMessage:error.message,
+        }
+    }
+}
+
+
+export const loginWithEmailPassword = async({email,password})=>{
+    try {
+        const resp = await signInWithEmailAndPassword(firebaseAuth,email,password)
+        const {uid,photoURL,displayName} = resp.user;
+        
         return{
             ok:true,
             uid,photoURL,displayName

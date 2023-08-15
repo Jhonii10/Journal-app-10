@@ -25,7 +25,7 @@ export const RegisterPage = () => {
 
     const { status, errorMessage } = useSelector( state => state.auth );
     const isCheckingAuthentication = useMemo( () => status == 'checking', [status]);
-    console.log(isCheckingAuthentication);
+
        
 
     const {
