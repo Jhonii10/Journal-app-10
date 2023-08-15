@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
 import { TurnedInNot } from "@mui/icons-material";
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const SideBar = ({draweWidth}) => {
+
+
+
+    const {displayName, email} = useSelector(state => state.auth)
+  
+
     return (
         <Box
             component={'nav'}
@@ -20,7 +27,7 @@ const SideBar = ({draweWidth}) => {
 
             <Toolbar>
                 <Typography variant="h6" noWrap component={'div'}>
-                    Jhoni ipia
+                    {displayName || email}
                 </Typography>
             </Toolbar>
 
