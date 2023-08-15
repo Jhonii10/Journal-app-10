@@ -6,6 +6,7 @@ const Authlayout = ({children, title=''}) => {
     return (
         <>
             <Grid
+            
             container
             spacing={0}
             direction="column"

@@ -36,7 +36,9 @@ export const LoginPages = () => {
     return (
         
             <Authlayout title="Login">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}
+                  className="animate__animated animate__fadeIn animate__faster"
+            >
                 <Grid
                     container
 
@@ -52,7 +54,6 @@ export const LoginPages = () => {
                         type="email"
                         placeholder="correo@gmail.com "
                         fullWidth
-                        autoComplete="off"
                         name="email"
                         value={email}
                         onChange={onInputChange}
