@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
-import { TurnedInNot } from "@mui/icons-material";
-import { Box, Divider, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
+import { Box, Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import SideBarItem from "./SideBarItem";
 
 const SideBar = ({draweWidth}) => {
 
 
 
     const {displayName, email} = useSelector(state => state.auth)
+    const {notes} = useSelector(state => state.journal)
+    
+
   
 
     return (
@@ -35,16 +38,8 @@ const SideBar = ({draweWidth}) => {
 
             <List>
                 {
-                    ['enero','febrero','marzo','abril','mayo','junio'].map(text =>(
-                        <ListItem key={text} disablePadding>
-                        <ListItemIcon >
-                            <TurnedInNot sx={{marginLeft:'12px'}}/>
-                        </ListItemIcon>
-                            <Grid container>
-                                <ListItemText primary={text}/>
-                                <ListItemText secondary={'i am have a cat, and your has a dog'}/>
-                            </Grid>
-                        </ListItem>
+                    notes.map(note =>(
+                        <SideBarItem key={note.id} {...note}/>
                     ))
                 }
             </List>
