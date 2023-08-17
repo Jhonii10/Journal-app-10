@@ -1,6 +1,6 @@
 
 import { BrowserRouter } from "react-router-dom";
-import AppRouter from "./router/AppRouter.JSX";
+import AppRouter from "./router/AppRouter";
 import AppTeam from "./theme/AppTeam";
 
 const JournalApp = () => {
