@@ -18,12 +18,12 @@ export default defineConfig({
         background_color: '#ffffff', // Color de fondo
         icons: [
           {
-            src: './src/assets/vite.svg', // Ruta al ícono de la PWA
+            src: 'src/assets/vite.svg', // Ruta al ícono de la PWA
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: './src/assets/vite.svg', // Ruta al ícono de la PWA
+            src: 'src/assets/vite.svg', // Ruta al ícono de la PWA
             sizes: '512x512',
             type: 'image/png',
           },
