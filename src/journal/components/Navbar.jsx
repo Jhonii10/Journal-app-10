@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { startLogout } from "../../store/auth/thunks";
 
 
-const Navbar = ({draweWidth = 240}) => {
+const Navbar = ({draweWidth = 240, toggleSidebar }) => {
+
+    
 
     const dispatch = useDispatch()
     const onLogout = ()=>{
@@ -24,7 +26,8 @@ const Navbar = ({draweWidth = 240}) => {
             <IconButton
                 color="inherit"
                 edge="start"
-                sx={{mr:2 , display: {sm: 'none'}}}
+                sx={{mr:2 , display: {md: 'none'}}}
+                onClick={toggleSidebar}
             >
                 <MenuOutlined/>
             </IconButton>
