@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true
+        enabled: false
       },
       manifest: {
         name: 'Journal App',
@@ -18,12 +18,12 @@ export default defineConfig({
         background_color: '#ffffff', // Color de fondo
         icons: [
           {
-            src: '/src/assets/vite.svg', // Ruta absoluta al ícono de la PWA
+            src: 'src/assets/vite.svg', // Ruta absoluta al ícono de la PWA
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/src/assets/vite.svg', // Ruta absoluta al ícono de la PWA
+            src: 'src/assets/vite.svg', // Ruta absoluta al ícono de la PWA
             sizes: '512x512',
             type: 'image/png',
           },
