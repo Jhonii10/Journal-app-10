@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { SaveOutlined } from "@mui/icons-material";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Delete, SaveOutlined, UploadOutlined } from "@mui/icons-material";
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import ImageGallery from "../components/ImageGallery";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../hooks/useForm";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { setActiveNote } from "../../store/journal/journalSlice";
-import { startSaveNote } from "../../store/journal/thunks";
+import { startDeletingNote, startSaveNote, startUploadingFiles } from "../../store/journal/thunks";
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.css'
 
@@ -26,14 +27,26 @@ const NoteView = () => {
     }, [formState]);
 
     useEffect(() => {
-       if (MessageSave.length > 0) {
+       if (MessageSave.length > 1) {
         Swal.fire('Nota actualizada', MessageSave,'success')
        }
     }, [MessageSave]);
 
+    const fileInputRef = useRef();
+
     const onSaveNote = ()=>{
         dispatch(startSaveNote())
     }
+
+    const onFileInputChange = ({ target }) => {
+        if( target.files === 0 ) return;
+        dispatch( startUploadingFiles( target.files ) );
+    }
+
+    const onDelete = ()=>{
+        dispatch(startDeletingNote())
+    }
+    
 
     return (
         <Grid
@@ -53,6 +66,22 @@ const NoteView = () => {
             <Grid
                 item   
             >
+            <input 
+                    type="file"
+                    multiple
+                    ref={ fileInputRef }
+                    onChange={ onFileInputChange }
+                    style={{ display: 'none' }}
+                />
+
+                <IconButton
+                    color="primary"
+                    disabled={ isSaving }
+                    onClick={ () => fileInputRef.current.click() }
+                >
+                    <UploadOutlined />
+                </IconButton>
+
               <Button 
                 color="primary"
                 sx={{p:2 , borderRadius:2}} 
@@ -65,7 +94,9 @@ const NoteView = () => {
 
             </Grid>
 
-            <Grid container>
+            <Grid 
+              container
+              >
                 <TextField
                     type="text"
                     variant="filled"
@@ -95,7 +126,24 @@ const NoteView = () => {
 
             </Grid>
 
-            <ImageGallery/>
+            <Grid
+             container
+             justifyContent={'end'}
+
+            >
+                <Button
+                  onClick={onDelete}
+                  sx={{mt:1}}
+                  color="error"
+                >
+                    <Delete/>
+                </Button>
+
+            </Grid>
+
+            <ImageGallery
+                images={note.imageUrl}
+            />
 
 
            
